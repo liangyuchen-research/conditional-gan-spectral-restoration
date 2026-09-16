@@ -1,6 +1,8 @@
-# Conditional GAN Spectral Restoration for Metal Quantification
+# GAN-Based Restoration of Plasma Spectra for Real-Time Heavy Metal Quantification
 
 A conditional generative adversarial network for restoring plasma emission spectra affected by matrix interference. The workflow pairs measured spectra, learns a spectral correction, and evaluates Zn, Ni, and Cu concentrations through wavelength-specific calibration, repeat measurements, and wastewater analysis.
+
+Developed at the Plasma Engineering Laboratory, National Taiwan University, with Prof. Cheng-Che Hsu. This repository contains the spectral-restoration component of the research. The companion [plasma spectroscopy repository](https://github.com/liangyuchen-research/plasma-spectroscopy-quantification) contains the direct concentration-prediction models and occlusion-based spectral interpretation experiments.
 
 ## Method
 
