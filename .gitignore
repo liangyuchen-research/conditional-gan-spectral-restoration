@@ -1,0 +1,14 @@
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.ipynb_checkpoints/
+data/local/
+results/
+*.h5
+*.hdf5
+*.npz
+*.mp4
+*.data-*-of-*

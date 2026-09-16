@@ -1,0 +1,12 @@
+# Suggested legacy-compatible environment based on imports and TensorFlow H5 APIs.
+# This is not an exact reconstruction of the original research environment.
+numpy<2
+pandas>=1.5,<3
+scipy>=1.9,<2
+matplotlib>=3.6,<4
+scikit-learn>=1.2,<2
+h5py>=3.8,<4
+tensorflow>=2.12,<2.16
+tqdm>=4.64,<5
+jupyterlab>=4,<5
+nbformat>=5,<6

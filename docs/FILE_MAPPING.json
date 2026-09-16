@@ -1,0 +1,64 @@
+[
+  {
+    "original": "Data preprocessing.ipynb",
+    "curated": "notebooks/01_prepare_datasets.ipynb"
+  },
+  {
+    "original": "conditional GAN (with to without).ipynb",
+    "curated": "notebooks/02_train_conditional_gan.ipynb"
+  },
+  {
+    "original": "conditional GAN (with to without)-With retake.ipynb",
+    "curated": "notebooks/03_repeat_measurement_experiment.ipynb"
+  },
+  {
+    "original": "conditional GAN (with to without)-Transfer learning.ipynb",
+    "curated": "notebooks/04_transfer_learning_experiment.ipynb"
+  },
+  {
+    "original": "Calibration curve (With Interference).py",
+    "curated": "scripts/calibrate_metal_concentrations.py"
+  },
+  {
+    "original": "Na Ca relative error.py",
+    "curated": "scripts/plot_matrix_interference_error.py"
+  },
+  {
+    "original": "Real conc. vs. Predicted conc..py",
+    "curated": "scripts/plot_measured_vs_predicted.py"
+  },
+  {
+    "original": "Reproductivity (Retake vs. Training).py",
+    "curated": "scripts/plot_repeatability.py"
+  },
+  {
+    "original": "Wastewater spike recovery.py",
+    "curated": "scripts/plot_wastewater_spike_recovery.py"
+  },
+  {
+    "original": "s(lambda) correction/mean relative error.py",
+    "curated": "scripts/plot_correction_error.py"
+  },
+  {
+    "original": "s(lambda) correction/Normalize by area.py",
+    "curated": "scripts/normalize_by_area.py"
+  },
+  {
+    "original": "s(lambda) correction/Normalize by HB.py",
+    "curated": "scripts/normalize_by_h_beta.py"
+  },
+  {
+    "original": "s(lambda) correction/s(lambda).py",
+    "curated": "scripts/correct_spectral_response.py"
+  },
+  {
+    "original": "20condition_seq1~15/Mean.csv",
+    "curated": "data/examples/standard_spectra.csv",
+    "selection": "Header and first six data rows; values unchanged"
+  },
+  {
+    "original": "wastewater2/Mean.csv",
+    "curated": "data/examples/wastewater_spectra.csv",
+    "selection": "Header and first six data rows; values unchanged"
+  }
+]
