@@ -21,9 +21,9 @@ Measured spectra and acquisition metadata
 | Location | Purpose |
 | --- | --- |
 | `notebooks/01_prepare_datasets.ipynb` | Construct paired and augmented spectra and export HDF5 datasets |
-| `notebooks/02_train_conditional_gan.ipynb` | Define, train, and evaluate the conditional GAN |
-| `notebooks/03_repeat_measurement_experiment.ipynb` | Training variant incorporating repeat measurements |
-| `notebooks/04_transfer_learning_experiment.ipynb` | Continue training from an earlier checkpoint |
+| `notebooks/02_train_conditional_gan.ipynb` | Train and evaluate the conditional GAN |
+| `src/spectral_gan.py` | Generator, discriminator, and original research losses |
+| `scripts/check_model.py`, `check_calibration.py` | Bounded model and calibration checks |
 | `scripts/calibrate_metal_concentrations.py` | Reference normalization, background subtraction, and linear calibration |
 | `scripts/correct_spectral_response.py` | Spectral alignment and wavelength-dependent response correction |
 | `scripts/normalize_by_area.py`, `normalize_by_h_beta.py` | Alternative normalization procedures |
@@ -33,7 +33,7 @@ Measured spectra and acquisition metadata
 
 ## Setup
 
-Use Python 3.10 or 3.11. Create a virtual environment and activate it with `.venv\Scripts\activate` on Windows or `source .venv/bin/activate` on macOS/Linux.
+Use Python 3.10–3.12. Create a virtual environment and activate it with `.venv\Scripts\activate` on Windows or `source .venv/bin/activate` on macOS/Linux.
 
 ```bash
 python -m venv .venv
@@ -42,7 +42,7 @@ python -m pip install -r requirements.txt
 python -m jupyter lab
 ```
 
-The dependency ranges target the TensorFlow/Keras 2 APIs used by the notebooks. They are compatibility guidance rather than an exact environment lockfile. PyTorch is used only for optional seed initialization. Interactive calibration scripts use Tk file dialogs and require a graphical desktop.
+The model uses TensorFlow 2.16.2 with legacy Keras 2.16. Its module selects the legacy runtime before importing TensorFlow. PyTorch is optional and used only when available for seed initialization. Calibration accepts explicit CSV paths. Response correction accepts paths or opens file dialogs when arguments are omitted.
 
 ## Data and execution
 
@@ -61,7 +61,7 @@ Start Jupyter from the repository root and run preprocessing before training. Ea
 Analysis scripts run independently:
 
 ```bash
-python scripts/calibrate_metal_concentrations.py
+python scripts/calibrate_metal_concentrations.py training.csv testing.csv --output results/calibration-run
 python scripts/plot_wastewater_spike_recovery.py
 ```
 
@@ -69,9 +69,16 @@ For the measured-versus-predicted plot, set `SPECTRAL_PREDICTIONS` to the calibr
 
 ## Reproducibility
 
-The main model, preprocessing, and analysis implementations are included. Earlier data versions required by the repeat-measurement and transfer variants are not included, so those notebooks cannot currently run end to end. Some plotting scripts use recorded summary arrays rather than recomputing predictions.
+The main model, preprocessing, and analysis implementations are included. Earlier repeat-measurement and transfer variants require acquisition versions absent from the supplied archive. Those variants are preserved privately; the public notebooks contain the complete preprocessing and main training workflow. Some plotting scripts use recorded summary arrays rather than recomputing predictions.
 
-Python syntax, notebook structure, example-data integrity, and standalone plotting have been checked. Full training and checkpoint inference have not been rerun in the documented environment. The [reproduction notes](docs/REPRODUCIBILITY.md) describe input requirements, experimental assumptions, and unresolved calibration annotations.
+Python syntax, notebook structure, example-data integrity, and standalone plotting have been checked. The model passes a finite forward/optimizer step and a weight-save/reload check on synthetic spectra. The archived generator weights also load and produce finite predictions, and the main notebook loads its ten required real input files and builds the model before training. Calibration is checked against known slopes and invalid reference intensities.
+
+```bash
+python scripts/check_model.py
+python scripts/check_calibration.py
+```
+
+Full training and independent scientific performance have not been reproduced. The [reproduction notes](docs/REPRODUCIBILITY.md) describe input requirements, experimental assumptions, and unresolved calibration annotations.
 
 ## Data and code use
 

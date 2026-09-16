@@ -16,7 +16,9 @@ def create_run(name):
     changing the working directory to a new experiment directory.
     """
     if not re.fullmatch(r"[a-z0-9_-]+", name):
-        raise ValueError("Use a lowercase experiment name with letters, numbers, underscores, or hyphens.")
+        raise ValueError(
+            "Use a lowercase experiment name with letters, numbers, underscores, or hyphens."
+        )
     data_dir = Path(os.environ.get("SPECTRAL_DATA_DIR", ROOT / "data" / "local")).resolve()
     output_root = Path(os.environ.get("SPECTRAL_OUTPUT_DIR", ROOT / "results")).resolve()
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
