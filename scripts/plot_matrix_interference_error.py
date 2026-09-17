@@ -2,8 +2,6 @@
 
 
 def run():
-    from pathlib import Path
-    import os
     from project_paths import create_run
 
     DATA_DIR, OUTPUT_DIR = create_run("plot_matrix_interference_error")

@@ -3,7 +3,6 @@
 
 def run():
     from pathlib import Path
-    import os
     import argparse
     from project_paths import create_run
 
@@ -22,7 +21,6 @@ def run():
     from scipy.signal import savgol_filter
     import tkinter as tk
     from tkinter import filedialog
-    import os
     import matplotlib.pyplot as plt
     import csv
 
@@ -271,7 +269,7 @@ def run():
             wl,
             new_std_aligned[idx, :],
             "--",
-            label=f"New standard (5 ppm, after alignment)",
+            label="New standard (5 ppm, after alignment)",
             linewidth=2,
         )
         plt.plot(
